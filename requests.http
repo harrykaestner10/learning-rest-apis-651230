@@ -1,1 +1,41 @@
-# Separate each request with a new line, then ###, then a new line.
+@baseUrl = https://symmetrical-computing-machine-j6w4vgp4g47hpqr4-8000.app.github.dev
+@userId = 100000
+@isbn = 9781234509876
+
+### Exercise 1 - Get all users
+GET {{baseUrl}}/users
+
+### Exercise 2 - Create my first user - "message": "User created with ID 100000"
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Harry Kaestner",
+  "email": "harry.api.student@example.com",
+  "address": "100 REST Avenue",
+  "phoneNumber": "555-0100"
+}
+
+### Exercise 3 - Get my user
+GET {{baseUrl}}/users/{{userId}}
+
+### Exercise 4 - Get all books
+GET {{baseUrl}}/books
+
+### Exercise 5 - Create a book
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "isbn": 9781234509876,
+  "title": "Harry Learns REST APIs",
+  "author": "Harry API Student",
+  "publisher": "Practice Press",
+  "year": 2026,
+  "pages": 250,
+  "genre": "Technology",
+  "location": "DEV-1"
+}
+
+### Exercise 6 - Get book by ISBN
+GET {{baseUrl}}/books/9781234509876
