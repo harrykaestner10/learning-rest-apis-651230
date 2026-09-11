@@ -39,3 +39,82 @@ Content-Type: application/json
 
 ### Exercise 6 - Get book by ISBN
 GET {{baseUrl}}/books/9781234509876
+
+### Exercise 7 - Get a nonexistent book
+GET {{baseUrl}}/books/9999999999999
+
+### Exercise 8 - Get my user
+GET {{baseUrl}}/users/{{userId}}
+
+### Exercise 9 - Checkout my book
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "userId": {{userId}},
+  "isbn": {{isbn}}
+}
+
+### Exercise 10 - Verify my checkout
+GET {{baseUrl}}/users/{{userId}}
+
+### Exercise 11 - Verify checked-out book
+GET {{baseUrl}}/books/{{isbn}}
+
+### Exercise 12 - Try duplicate checkout
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "userId": {{userId}},
+  "isbn": {{isbn}}
+}
+
+### Exercise 13 - Checkout with nonexistent user
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "userId": 999999999,
+  "isbn": {{isbn}}
+}
+### Exercise 14 - Checkout with nonexistent book
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "userId": {{userId}},
+  "isbn": 9999999999999
+}
+
+### Exercise 15 - Return my book
+POST {{baseUrl}}/return/{{isbn}}?user_id={{userId}}
+
+### Exercise 16 - Verify book was returned
+GET {{baseUrl}}/users/{{userId}}
+
+### Exercise 17 - Checkout returned book again
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "userId": {{userId}},
+  "isbn": {{isbn}}
+}
+
+### Exercise 18 - Verify second checkout
+GET {{baseUrl}}/users/{{userId}}
+
+### Exercise 19 - Invalid userId data type
+GET {{baseUrl}}/users/not-a-number
+
+### Exercise 20 - Missing required user fields
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Incomplete API Student"
+}
+
+### Exercise 21 - Cleanup: return checked-out book
+POST {{baseUrl}}/return/{{isbn}}?user_id={{userId}}
